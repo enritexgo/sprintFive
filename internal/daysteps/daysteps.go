@@ -26,13 +26,22 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	}
 
 	steps, err := strconv.Atoi(data[0])
-	if err != nil || steps <= 0 {
+	if err != nil {
+		return err
+	}
+
+	if steps <= 0 {
 		return errors.New("mistake steps count")
 	}
+
 	ds.Steps = steps
 
 	duration, err := time.ParseDuration(data[1])
-	if err != nil || duration <= 0 {
+	if err != nil {
+		return err
+	}
+
+	if duration <= 0 {
 		return errors.New("mistake duration count")
 	}
 	ds.Duration = duration

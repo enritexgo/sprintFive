@@ -17,11 +17,13 @@ func Info(dataset []string, dp DataParser) {
 		err := dp.Parse(data)
 		if err != nil {
 			log.Printf("mistake in Parse(): %v", err)
+			continue
 		}
 
 		result, err := dp.ActionInfo()
 		if err != nil {
 			log.Printf("mistake in ActionInfo(): %v", err)
+			continue
 		}
 		fmt.Println(result)
 	}
